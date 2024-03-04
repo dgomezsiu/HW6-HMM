@@ -45,6 +45,8 @@ def test_mini_weather():
     hidden_state_sequence = hmm.viterbi(observations)
     if expected_hidden_states is not None:
         assert hidden_state_sequence == list(expected_hidden_states)
+        assert len(hidden_state_sequence == len(list(expected_hidden_states)))
+        assert len(hidden_state_sequence) == len(observations)
 
 
 
