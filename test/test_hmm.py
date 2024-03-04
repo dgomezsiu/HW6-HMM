@@ -48,6 +48,10 @@ def test_mini_weather():
         assert len(hidden_state_sequence) == len(list(expected_hidden_states))
         assert len(hidden_state_sequence) == len(observations)
 
+    # check edge cases
+    assert np.all(mini_hmm["transition_p"] != 0)
+    assert np.all(mini_hmm["emission_p"] != 0)
+
 
 
    
