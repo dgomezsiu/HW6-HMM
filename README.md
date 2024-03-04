@@ -46,6 +46,11 @@ Within your code, consider the scope of the inputs and how the different paramet
 
 Finally, please update your README with a brief description of your methods. 
 
+## Methods
+
+  * Forward algorithm: First, start by initialize starting values for the probability distribution of states. Then, calculate and sum the probabilities of ending up in each state given the previous state. To return, summing the probabilities at all states gives the total probability of observing the given sequence.
+  * Viterbi algorithm: Start by initializing starting values. Calculate the probability of arriving in this current state given the possible previous states. Multiplying the probability of each previous state by the transition probability to the current state and the current observation's emission probability from the current state. Keep track of the path with a backpointer table. To terminate, return the state with the highest probability path, the Viterbi path. 
+
 
 
 ## Task List
