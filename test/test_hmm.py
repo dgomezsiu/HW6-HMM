@@ -41,15 +41,13 @@ def test_mini_weather():
     if expected_forward_prob is not None:
         assert np.isclose(forward_prob, expected_forward_prob, atol = 1e-4)
 
-    
+    # check viterbi sequence
+    hidden_state_sequence = hmm.viterbi(observations)
+    if expected_hidden_states is not None:
+        assert hidden_state_sequence == list(expected_hidden_states)
 
 
 
-
-
-
-
-    
    
 
 
