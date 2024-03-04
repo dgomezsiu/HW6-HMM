@@ -39,7 +39,7 @@ def test_mini_weather():
     # check forward prob
     forward_prob = hmm.forward(observations)
     if expected_forward_prob is not None:
-        assert np.isclose(forward_prob, expected_forward_prob)
+        assert np.isclose(forward_prob, expected_forward_prob, rtol = 1e-5)
 
     
 
