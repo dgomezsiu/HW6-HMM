@@ -71,17 +71,28 @@ def test_full_weather():
 
     """
 
-    pass
+    full_hmm=np.load('./data/full_weather_hmm.npz')
+    full_input=np.load('./data/full_weather_sequences.npz')
 
+    observation_states = full_hmm['observation_states']
+    hidden_states = full_hmm['hidden_states']
+    prior_p = full_hmm['prior_p']
+    transition_p = full_hmm['transition_p']
+    emission_p = full_hmm['emission_p']
 
+    observations = full_input['observation_state_sequence']
+    expected_hidden_states = full_input.get('best_hidden_state_sequence')
 
+    # initialize hmm
+    hmm = HiddenMarkovModel(observation_states, hidden_states, prior_p, transition_p, emission_p)
 
+    # check viterbi sequence
+    hidden_state_sequence = hmm.viterbi(observations)
+    if expected_hidden_states is not None:
+        assert hidden_state_sequence == list(expected_hidden_states)
+        assert len(hidden_state_sequence) == len(list(expected_hidden_states))
+        assert len(hidden_state_sequence) == len(observations)
 
-
-
-
-
-
-
-
-
+    # check edge cases
+    assert np.all(mini_hmm["transition_p"] != 0)
+    assert np.all(mini_hmm["emission_p"] != 0)
