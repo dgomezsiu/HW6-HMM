@@ -94,5 +94,5 @@ def test_full_weather():
         assert len(hidden_state_sequence) == len(observations)
 
     # check edge cases
-    assert np.all(mini_hmm["transition_p"] != 0)
-    assert np.all(mini_hmm["emission_p"] != 0)
+    assert np.all(full_hmm["transition_p"] != 0)
+    assert np.all(full_hmm["emission_p"] != 0)
