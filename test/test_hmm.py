@@ -30,15 +30,18 @@ def test_mini_weather():
 
     observations = mini_input['observation_state_sequence']
     expected_hidden_states = mini_input.get('best_hidden_state_sequence')
-    expected_forward_prob = 0.0356
+    expected_forward_prob = 0.03506 # calculated
 
+    # initialize hmm
     hmm = HiddenMarkovModel(observation_states, hidden_states, prior_p, transition_p, emission_p)
 
 
+    # check forward prob
     forward_prob = hmm.forward(observations)
-    print(f"Forward algorithm probability: {forward_prob}")
     if expected_forward_prob is not None:
-        assert np.isclose(forward_prob, expected_forward_prob), f"Forward probability {forward_prob} does not match expected {expected_forward_prob}"
+        assert np.isclose(forward_prob, expected_forward_prob)
+
+    
 
 
 
